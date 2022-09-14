@@ -8,6 +8,7 @@ main {
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
 }
 
 .grid-container {
@@ -67,4 +68,8 @@ button:hover {
 .win-container {
   position: absolute;
   bottom: 0px;
+}
+
+.win-container h3 {
+  margin: 0px;
 }

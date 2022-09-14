@@ -63,3 +63,8 @@ button:hover {
   font-size: 45px;
   margin-bottom: 10px;
 }
+
+.win-container {
+  position: absolute;
+  bottom: 0px;
+}

@@ -8,6 +8,7 @@ import Title from "./Components/Title";
 function App() {
   const [dice, setDice] = useState(AllNewDice());
   const [tenzies, setTenzies] = useState(false);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     const allHeld = dice.every((die) => die.isHeld);
@@ -22,6 +23,7 @@ function App() {
   function newGame() {
     setDice(AllNewDice());
     setTenzies(false);
+    setCount(0);
   }
 
   function AllNewDice() {
@@ -46,6 +48,7 @@ function App() {
         return die.isHeld ? die : generateNewDie();
       })
     );
+    setCount((prevCount) => prevCount + 1);
   }
 
   function holdDice(id) {
@@ -65,14 +68,19 @@ function App() {
     />
   ));
 
+  const btnTitle = count > 0 ? "Roll " + count : "Roll";
+
   return (
     <main>
       {tenzies && <Confetti />}
       <Title />
       <div className="grid-container">{diceElement}</div>
       <button onClick={tenzies ? newGame : rollDice}>
-        {tenzies ? "New game" : "Roll"}
+        {tenzies ? "New game" : btnTitle}
       </button>
+      <div className="win-container">
+        {tenzies && <h3>You won on {count} rolls</h3>}
+      </div>
     </main>
   );
 }
